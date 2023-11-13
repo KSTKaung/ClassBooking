@@ -1,0 +1,34 @@
+﻿@model ClassBooking.Models.UserModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+<form asp-controller ="User" method="post">
+    <span class="text-danger">@TempData["ErrorMessage"]</span>
+    <table>
+        <tr>
+            <td>
+                <label>UserName</label>
+            </td>
+            <td>
+                <input type="text" asp-for="UserName" placeholder="Enter Username" required />
+            </td>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="password" asp-for="Password" placeholder="Enter Password" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" asp-action="LoginData">Login</button>
+            </td>
+            <td>
+                <a asp-action="Register">Register</a>
+            </td>
+        </tr>
+    </table>
+</form>

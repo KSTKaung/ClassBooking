@@ -1,0 +1,65 @@
+﻿@using ClassBooking.Models
+@model ClassBooking.Models.UserModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+<form asp-controller="User" method="post">
+    <table>
+        <tr>
+            <td>
+                <label>UserName</label>
+            </td>
+            <td>
+                <input type="text" asp-for="UserName" placeholder="Enter Username" required />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+            <td>
+                <input type="password" asp-for="Password" placeholder="Enter Password" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Name</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Name" placeholder="Enter Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Country</label>
+            </td>
+            <td>
+                <select asp-for="Country" asp-items="Html.GetEnumSelectList<ConstantData.Country>()"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>PhoneNo</label>
+            </td>
+            <td>
+                <input type="text" asp-for="PhoneNo" placeholder="Enter PhoneNo" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Address</label>
+            </td>
+            <td>
+                <input type="text" asp-for="Address" placeholder="Enter Address" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" asp-action="RegisterData">Register</button>
+            </td>
+        </tr>
+    </table>
+</form>

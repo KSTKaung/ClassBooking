@@ -1,0 +1,40 @@
+﻿@model ClassBooking.Models.Package
+
+<h1>List of Packages</h1>
+<form asp-controller="Home" method="post">
+    <span class="text-danger">@TempData["ErrorMessage"]</span>
+    <div></div>
+    <table class="table" title="Available Packages">
+        <thead>
+            <tr>
+                <th>Package Name</th>
+                <th>Country</th>
+                <th>Price</th>
+                <th>Credit</th>
+                <th>Expired Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listPackage)
+            {
+                <tr>
+                    <td>@item.PackageName</td>
+                    <td>@item.Country</td>
+                    <td>@item.Price</td>
+                    <td>@item.Credit</td>
+                    <td>@item.ExpiredDate</td>
+                    <td>
+                        @if (@item.PurchasedFlag == false)
+                        {
+                            @Html.ActionLink("Purchase","PurchasePackage", new { id = @item.PackageID})
+                        }
+                        else
+                        {
+                            <label>Purchase</label>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

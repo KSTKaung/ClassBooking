@@ -1,0 +1,54 @@
+﻿@model ClassBooking.Models.Class
+
+<h1>List of Classes</h1>
+<form asp-controller="Home" method="post">
+    <span class="text-danger">@TempData["ErrorMessage"]</span>
+    <table class="table">
+        <thead>
+            <tr>
+                <th hidden="hidden">ClassID</th>
+                <th>Class</th>
+                <th>Date</th>
+                <th>Check In Time</th>
+                <th>Check Out Time</th>
+                <th>Credit Cost</th>
+                <th>Number Of People</th>
+                <th>Country</th>
+                <th>Expired Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.listClass)
+            {
+                <tr>
+                    <td hidden="hidden">@item.ClassID</td>
+                    <td>@item.ClassTitle</td>
+                    <td>@item.Date</td>
+                    <td>@item.CheckInTime</td>
+                    <td>@item.CheckOutTime</td>
+                    <td>@item.Credit</td>
+                    <td>@item.NumberOfPeople</td>
+                    <td>@item.Country</td>
+                    <td>@item.ExpiredDate</td>
+                    <td>
+                        @if (@item.StatusFlag == 2)
+                        {
+                            <label>Book</label>
+                            @Html.ActionLink("Cancel","Cancel", new { id = @item.ClassID})
+                        }
+                        else if (@item.StatusFlag == 4)
+                        {
+                            <label>Book</label>
+                            <label>Cancel</label>
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Book","BookClass", new { id = @item.ClassID})
+                            <label>Cancel</label>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
